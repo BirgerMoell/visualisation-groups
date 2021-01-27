@@ -1,22 +1,31 @@
 import logo from './logo.svg';
+import React, { useState } from 'react'
 import './App.css';
+import rd3 from 'react-d3-library';
+import data from "./data.json"
+const RD3Component = rd3.Component;
+
+function DataLoader(props) {
+
+  return (
+    props.data.map(item => 
+
+      <div>{item.Alias}</div>
+    )
+  )
+
+}
 
 function App() {
+
+  const [d3, setd3] = useState("")
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+        <DataLoader data={data}/>
+      <RD3Component data={d3} />
       </header>
     </div>
   );
